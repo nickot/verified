@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Account Information</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Jquery -->
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css">
+    	<link rel="stylesheet" href="css/listview-grid.css">
+        <!-- CSS reference -->
+        <link rel="stylesheet" type="text/css" href="ActInfoTabs.css">
+        <!-- Jquery -->
+    	<script src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/parse-1.3.0.min.js"></script>
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="js/underscore-1.1.6.js"></script>
+        <!-- Parse -->
+        <script src="https://unpkg.com/parse/dist/parse.min.js"></script>
+        <!-- Jquery/files from prev. application made -->
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/phonegap.js"></script>
+
+        <!-- change tab displayed when user clicks -->
+        <script>
+            function tabChange(evt, tabName) {
+                // Declare all variables
+                var i, tabcontent, tablinks;
+            
+                // Get all elements with class="tabcontent" and hide them
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+            
+                // Get all elements with class="tablinks" and remove the class "active"
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+            
+                // Show the current tab, and add an "active" class to the button that opened the tab
+                document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+        </script>
+
+        <!-- Not sure this is needed -->
+        <style type="text/css">
+
+            @media only screen and (min-width: 600px) { .ui-page { width: 480px !important; margin: 0 auto !important; position: relative !important; } }
+
+            h2 {
+                text-align: left;
+            }            
+            .content {
+
+                padding: 10px 0;
+                width: 780px;
+                background: #99CCFF;
+                float: left;
+            }
+            fieldset
+            {
+                border: 1px solid #781351;
+                width: 30em
+            }
+            legend
+            {
+                color: #fff;
+                background: #ffa20c;
+                border: 1px solid #781351;
+                padding: 2px 6px
+            } 
+
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="header">
+                <button id="logout-btn">Logout</button>
+                <div class="header-right">
+                    <h1>Account Information</h1>
+                </div>
+            </div>
+        </header>
+
+        <div id="below-header">
+            <div class="container1">
+                <h2>Jane Doe's Possessions</h2>
+                <div class="btns-container">
+                    <button class="tablinks active" onclick="tabChange(event, 'tab1')">Asset ID's</button>
+                    <button class="tablinks" onclick="tabChange(event, 'tab2')">Payment Info</button>
+                    <button class="tablinks" onclick="tabChange(event, 'tab3')">Profile</button>
+                </div>
+            </div>
+            <div class="container2">
+                <div class="tab">
+                    
+                    <!-- Get info from Digital Asset ID info (details tab) -->
+                    
+                    <!-- tab 1: asset IDs and details -->
+                    <div id='tab1' class="tabcontent">
+
+                        <button id="add-asset-btn" class="ui-btn ui-icon-plus ui-btn-icon-notext ui-btn-b" data-icon="plus"></button>
+                        <div data-role="collapsible-set">
+                                
+                            <div data-role="collapsible">
+
+                                <table>
+                                    <tbody>
+                                        <!-- Table column spacing done here: 25%, 50%, 25% -->
+                                        <tr>
+                                            <th style="width: 25%"><label for="brand">Brand</label></th>
+                                            <th style="width: 50%"><label for="product-description">Product Description</label></th>
+                                            <th style="width: 25%"><label for="value">Value</label></th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+                    <!-- tab 2: payment info -->
+                    <div id='tab2' class="tabcontent">
+                        <br>
+                        
+
+                        <h1>INSERT PAYMENT INFO</h1>
+                    </div>
+                    
+                    <!-- tab 3: profile info -->
+                    <div id='tab3' class="tabcontent">
+                        <br>
+
+                        <div data-role="collapsible-set">
+
+                            <div data-role="collapsible">
+
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td><label for="name">Name</label></td>
+                                            <td><input type="text" name="name" id="name" value="" data-mini="true" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="address">Address</label></td>
+                                            <td><input type="text" name="address" id="address" value="" data-mini="true" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="city">City</label></td>
+                                            <td><input type="text" name="city" id="city" value="" data-mini="true" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="state">State</label></td>
+                                            <td><input type="text" name="state" id="state" value="" data-mini="true" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="zipcode">Zip Code</label></td>
+                                            <td><input type="text" name="zipcode" id="zipcode" value="" data-mini="true" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="country">Country</label></td>
+                                            <td><input type="text" name="country" id="country" value="" data-mini="true" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="client-id">Client ID</label></td>
+                                            <td><input type="text" name="client-id" id="client-id" value="" data-mini="true" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="username">Username</label></td>
+                                            <td><input type="text" name="username" id="username" value="" data-mini="true" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="password">Password</label></td>
+                                            <td><input type="text" name="password" id="password" value="" data-mini="true" /></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>            
+            
+
+        </div>
+
+    </body>
+</html>

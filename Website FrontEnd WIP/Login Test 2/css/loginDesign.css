@@ -1,0 +1,73 @@
+#blackBar {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:60px;
+    background-color:black;
+    z-index: -1;
+}
+
+body {
+    background-color: #F0F0F0;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 200px;
+}
+
+#login {
+     padding-top: 50px;
+     text-align: center;
+     padding-right: 80px;
+}
+
+#login input[type=submit] {
+    top: 50px;
+    background-color: #F9F9F9;
+    border-radius: 6px;
+    color: black;
+    font-weight: bold;
+    margin-right: 40px;
+    border-width: 2px;
+    height: 30px;
+    width: 60px;
+    border-radius: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+    font-weight: bold;
+    color: #8D8D8D;
+    font-style: "Arial";
+    font-size: 18pt;
+    padding-right: 10px;
+}​
+
+/* not sure why css doesn't work with this id/img tag - also when the below empty css is deleted, some other css in document doesn't apply.. */
+#icon {
+
+}
+
+.field {
+    border-radius: 6px;
+    border-width: 1px;
+    width: 300px;
+    height: 25px;
+}
+
+#forgotPassword {
+    text-align: center;
+    padding-top: 30px;
+    padding-right: 50px;
+}
+
+#forgotPassword button {
+    text-align: center;
+    border-radius: 10px;
+    padding: 8px;
+    background-color: white;
+}

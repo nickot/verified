@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <link rel="stylesheet" href="css/validationEngine.jquery.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.mobile-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/validation/jquery.validationEngine-en.js"></script>
+    <script type="text/javascript" src="js/validation/jquery.validationEngine.js"></script>
+    <script type="text/javascript" src="js/parse-1.6.14.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="cordova.js"></script> -->
+
+
+    <link rel="stylesheet" href="css/registerDesign.css">
+<!-- 
+    <script type="text/javascript" src="js/validation/jquery.validationEngine-en.js"></script>
+    <script type="text/javascript" src="js/validation/jquery.validationEngine.js"></script> -->
+    <script type="text/javascript" src="js/parse-1.6.14.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/parse/dist/parse.min.js"></script>
+
+    <!-- <script src="https://unpkg.com/parse/dist/parse.min.js"></script> -->
+
+    <!-- <script>
+        Parse.initialize("gGFTqN2yPtsfnnYvLimVbem9FZKkg4CuEHOGRtj8", "SnYhWEcbhFG4QolJbjadfIWiktB6cN1maHbVN7Gt"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR Javascript KEY
+        Parse.serverURL = "https://parseapi.back4app.com/";
+        // PASTE YOUR TEST CODE HERE
+        var user = new Parse.Clients();
+        user.save({
+          user_name: 'sampeusername',
+          password: '123456'
+        }, {
+          success: function(response) {
+            alert('New object create with success! ObjectId: ' + response.id + `, ` + user.get('user_name'));
+          },
+          error: function(response, error) {
+            alert('Erro: ' + error.message);
+          }
+        });
+      </script> -->
+
+      
+      <!-- <script src="https://unpkg.com/parse/dist/parse.min.js">
+        $("#registerBtn").click(function () {
+            console.log($('#frm_signup').length);
+            if ($("#frm_signup").validationEngine('validate'))
+            {
+
+                showLoader('Saving..');
+                Parse.initialize("gGFTqN2yPtsfnnYvLimVbem9FZKkg4CuEHOGRtj8", "SnYhWEcbhFG4QolJbjadfIWiktB6cN1maHbVN7Gt"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR Javascript KEY
+                Parse.serverURL = "https://parseapi.back4app.com/";
+                var user = new Parse.User();
+                var someDate = new Date();
+                var numberOfDaysToAdd = 31;
+                someDate.setDate(someDate.getDate() + numberOfDaysToAdd);
+                var dd = someDate.getDate();
+                var mm = someDate.getMonth() + 1;
+                var y = someDate.getFullYear();
+                var expire_date = y + '/'+ mm + '/'+ dd;
+                
+                user.set("username", $('#email').val());
+                user.set("fullName", $('fullName').val());
+                user.set("phone", $('#phone').val());
+                user.set("password", $('#password').val());
+                user.set("email", $('#email').val());
+
+                console.log($('#email').val());
+                console.log($('#fullName').val());
+                console.log($('#phone').val());
+                console.log($('#password').val());
+
+
+                user.signUp(null, {
+                    success: function (user) {
+                        hideLoader();
+                        emptyForm('frm_signup');
+                        $("#message").html("<div class='success'>We have sent an email to active your account</div>");
+
+                    },
+                    error: function (user, error) {
+                        hideLoader();
+                        $("#message").html("<div class='error'>" + error.message + "</div>");
+
+                    }
+                });
+            }
+        });
+      </script> -->
+
+      <!-- <script>
+        $(document).ready(function() {
+            Parse.initialize("gGFTqN2yPtsfnnYvLimVbem9FZKkg4CuEHOGRtj8", "SnYhWEcbhFG4QolJbjadfIWiktB6cN1maHbVN7Gt"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR Javascript KEY
+            Parse.serverURL = "https://parseapi.back4app.com/";
+            $("#registerBtn").click(function () {
+            var user = new Parse.User();
+            // var un = $('#email').val();
+            // var emai = $('#email').val();
+            // var pass = $('#password').val();
+            var un = $('#frm_signup').find('#email').val();
+            var emai = $('#frm_signup').find('#email').val();
+            var pass = $('#frm_signup').find('#password').val();
+            user.save({
+            username: un,
+            email: emai,
+            password: pass
+            }, {
+            success: function(response) {
+                alert('New object create with success! ObjectId: ' + response.id + `, ` + user.get('username'));
+            },
+            error: function(response, error) {
+                alert('Error: ' + error.message);
+            }
+        });
+            })
+      </script> -->
+
+      <script>
+            Parse.initialize("gGFTqN2yPtsfnnYvLimVbem9FZKkg4CuEHOGRtj8", "SnYhWEcbhFG4QolJbjadfIWiktB6cN1maHbVN7Gt"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR Javascript KEY
+            Parse.serverURL = "https://parseapi.back4app.com/";
+        function signUp() {
+            // Create a new instance of the user class
+            var user = new Parse.User();
+            user.set("username", $('#email').val());
+            user.set("password", $('#password').val());
+            user.set("email", $('#email').val());
+
+            // other fields can be set just like with Parse.Object
+            user.set("phone", $('#phone').val());
+
+            user.signUp(null, {
+            success: function(user) {
+                console.log('User created successful with name: ' + user.get("username") + ' and email: ' + user.get("email"));
+            },
+            error: function(user, error) {
+                // Show the error message somewhere and let the user try again.
+                // It is likely that the user is trying to sign with a username or email already taken.
+                console.log("Error: " + error.code + " " + error.message);
+            }
+            });
+        }
+      </script>
+
+    <title>Register</title>
+</head>
+
+<body>
+    <div id="blackBar"></div>
+
+    <h1>Register</h1>
+
+    <div id="register">
+        <form id='frm_signup'>
+            <label>Full Name</label> <input class="field" type="text" name="fullName" id="fullName"><br><br>
+            <label>Email</label> <input class="field" type="text" name="email" id="email"><br><br>
+            <label>Phone</label> <input class="field" type="text" name="phone" id="phone"><br><br>
+            <label>Password</label> <input class="field" type="password" name="password" id="password"><br><br>
+            <label>Re-Enter Password</label> <input class="field" type="password" name="reenterPassword"><br>
+            <br>
+            <input id="registerBtn" type="submit" value="Register" onclick="signUp()">
+        </form>
+    </div>
+
+    <div id="login">
+        <button>Login</button>
+    </div>
+    
+</body>
+
+
+</html>

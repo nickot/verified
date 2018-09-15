@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TITLE REPLACE</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css">
+    	<link rel="stylesheet" href="css/listview-grid.css">
+        <link rel="stylesheet" type="text/css" href="DigAssetTabs.css">
+    	<script src="js/jquery.js"></script>   <!-- Not sure if this file / script is needed -->
+        <script type="text/javascript" src="js/parse-1.3.0.min.js"></script>
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="js/underscore-1.1.6.js"></script>
+        <script src="https://unpkg.com/parse/dist/parse.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/phonegap.js"></script>
+        <!-- <script>
+
+        $('ul.tabs').each(function(){
+            // For each set of tabs, we want to keep track of
+            // which tab is active and it's associated content
+            var $active, $content, $links = $(this).find('a');
+
+            // If the location.hash matches one of the links, use that as the active tab.
+            // If no match is found, use the first link as the initial active tab.
+            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+            $active.addClass('active');
+
+            $content = $($active[0].hash);
+
+            // Hide the remaining content
+            $links.not($active).each(function () {
+              $(this.hash).hide();
+            });
+
+            // Bind the click event handler
+            $(this).on('click', 'a', function(e){
+                // Make the old tab inactive.
+                $active.removeClass('active');
+                $content.hide();
+
+                // Update the variables with the new link and content
+                $active = $(this);
+                $content = $(this.hash);
+
+                // Make the tab active.
+                $active.addClass('active');
+                $content.show();
+
+                // Prevent the anchor's default click action
+                e.preventDefault();
+            });
+        });
+
+        </script> -->
+
+        <script>
+            function tabChange(evt, tabName) {
+                // Declare all variables
+                var i, tabcontent, tablinks;
+            
+                // Get all elements with class="tabcontent" and hide them
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+            
+                // Get all elements with class="tablinks" and remove the class "active"
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+            
+                // Show the current tab, and add an "active" class to the button that opened the tab
+                document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+        </script>
+
+        <!-- Not sure this is needed -->
+        <style type="text/css">
+
+            @media only screen and (min-width: 600px) { .ui-page { width: 480px !important; margin: 0 auto !important; position: relative !important; } }
+
+            h2 {
+                text-align: left;
+            }            
+            .content {
+
+                padding: 10px 0;
+                width: 780px;
+                background: #99CCFF;
+                float: left;
+            }
+            fieldset
+            {
+                border: 1px solid #781351;
+                width: 30em
+            }
+            legend
+            {
+                color: #fff;
+                background: #ffa20c;
+                border: 1px solid #781351;
+                padding: 2px 6px
+            } 
+
+        </style>
+    </head>
+
+    <body>
+
+        <!-- <ul class='tabs'>
+            <li><a href='#tab1'>Details</a></li>
+            <li><a href='#tab2'>Image</a></li>
+            <li><a href='#tab3'>Serial #</a></li>
+            <li><a href='#tab3'>Receipt</a></li>
+        </ul> -->
+
+        <div class="tab">
+            <button class="tablinks" onclick="tabChange(event, 'tab1')">Details</button>
+            <button class="tablinks" onclick="tabChange(event, 'tab2')">Image</button>
+            <button class="tablinks" onclick="tabChange(event, 'tab3')">Serial #</button>
+            <button class="tablinks" onclick="tabChange(event, 'tab4')">Serial Receipt</button>
+        </div>
+
+
+
+        <div id='tab1' class="tabcontent">
+            <br>
+            <p>Hi, this is the first tab.</p>
+
+            <!-- Get info from Digital Asset ID info (details tab) -->
+
+            <button>Add Digital Asset ID</button>
+            <div data-role="collapsible-set">
+                    
+                <div data-role="collapsible">
+
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label for="brand">Brand</label></td>
+                                <td><label for="product-description">Product Description</label></td>
+                                <td><label for="value">Value</label></td>
+                            </tr>
+                            <tr>
+                                <td><label for="name">Name</label></td>
+                                <td><input type="text" name="name" id="name" value="" data-mini="true" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div id='tab2' class="tabcontent">
+            <br>
+            <p>This is the 2nd tab.</p>
+            <h2>PAYMENT INFO</h2>
+        </div>
+        <div id='tab3' class="tabcontent">
+            <br>
+            <p>And this is the 3rd tab.</p>
+            <div data-role="collapsible-set">
+
+                <div data-role="collapsible">
+
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label for="name">Name</label></td>
+                                <td><input type="text" name="name" id="name" value="" data-mini="true" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="address">Address</label></td>
+                                <td><input type="text" name="address" id="address" value="" data-mini="true" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="city">City</label></td>
+                                <td><input type="text" name="city" id="city" value="" data-mini="true" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="state">State</label></td>
+                                <td><input type="text" name="state" id="state" value="" data-mini="true" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="zipcode">Zip Code</label></td>
+                                <td><input type="text" name="zipcode" id="zipcode" value="" data-mini="true" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="country">Country</label></td>
+                                <td><input type="text" name="country" id="country" value="" data-mini="true" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="client-id">Client ID</label></td>
+                                <td><input type="text" name="client-id" id="client-id" value="" data-mini="true" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="username">Username</label></td>
+                                <td><input type="text" name="username" id="username" value="" data-mini="true" /></td>
+                            </tr>
+                            <tr>
+                                <td><label for="password">Password</label></td>
+                                <td><input type="text" name="password" id="password" value="" data-mini="true" /></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id='tab4' class="tabcontent">
+                <br>
+                <p>This is the 4th tab.</p>
+                <h2>SERIAL RECEIPT</h2>
+        </div>
+
+        <style>
+
+        </style>
+    </body>
+</html>
